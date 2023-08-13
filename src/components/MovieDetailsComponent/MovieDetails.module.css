@@ -8,5 +8,8 @@
   margin-right: 8px;
 }
 .add-info {
-  box-shadow: 1px 1px 14px 4px rgba(255, 255, 255, 0.42);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.72);
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }

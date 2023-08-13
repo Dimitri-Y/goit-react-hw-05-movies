@@ -9,7 +9,7 @@ import css from "../components/MovieDetailsComponent/MovieDetails.module.css"
 const MovieDetails = () => {
   const { movie_id } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/movies";
+  const backLinkHref = location.state?.from ?? "/";
   const [details,setDetails] =useState(null);  
     const [isLoading,setIsLoading]=useState(false);
     const [error,setError]=useState(null);

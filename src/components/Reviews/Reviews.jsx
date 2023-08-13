@@ -23,19 +23,18 @@ const Reviews = () => {
   }  
     addCredits();
   },[movie_id]); 
-    return (
+  return (
       <section>
         <LoadingBlock error={error} isLoading={isLoading}>
-            {reviews&&
-  reviews.results.map(result=>
-    {
+            {reviews?
+              reviews.results.map(result=>{
         return(<li key={result.id}>
-        <h2>Author: {result.author}</h2>
-        <p>{result.content}</p>
-    </li>)}
-    )}
+                  <h2>Author: {result.author}</h2>
+                  <p>{result.content}</p>
+              </li>)}):<p>We don't have any reviews for this movie</p>
+            }
         </LoadingBlock>
       </section>
-    );
+    )
   };
   export default Reviews;

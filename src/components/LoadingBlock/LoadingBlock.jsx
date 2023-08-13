@@ -2,7 +2,7 @@ import { ThreeDots} from 'react-loader-spinner'
 import PropTypes from "prop-types";
 
 const LoadingBlock = ({error,children,isLoading}) => {
-    return (
+  return (
           <div>
             {error && <p>Whoops, something went wrong: {error.message}</p>}
            {isLoading && <div style={{display:'flex',alignContent:"center",justifyContent:"center"}}>

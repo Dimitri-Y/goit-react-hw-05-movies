@@ -3,11 +3,13 @@ import CatalogItem from "../CatalogItem/CatalogItem";
 import PropTypes from "prop-types";
 
 const Catalog =({catalog})=>{
+  
   return(
     <ul className={css["catalog"]}>
-      {catalog.map(({title,id})=>(
+      {catalog.map(({title,id})=>{
+        return(
           <CatalogItem id={id} title={title} key={id}></CatalogItem>
-      )
+      )}
       )
     }
   </ul>);

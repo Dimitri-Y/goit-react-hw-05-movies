@@ -4,15 +4,16 @@ import { useLocation, Link } from 'react-router-dom';
 
 const CatalogItem=({title,id})=>{
     const location = useLocation();
+    const to = location.pathname==="/"?`movies/${id}`:`${id}`;
     return(
-        <li className={css["CatalogItem"]}>
-            {title&&<Link to={`movies/${id}`} state={{ from: location }}>{title}</Link>}
+        <li className={title?css["CatalogItem"]:css["CatalogItem-disabled"]}>
+            {<Link to={to} state={{ from: location }}>{title}</Link>}
         </li>);
 
 }
 CatalogItem.propTypes ={
     title: PropTypes.string,
-    id: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
 }
 
 export default CatalogItem;
