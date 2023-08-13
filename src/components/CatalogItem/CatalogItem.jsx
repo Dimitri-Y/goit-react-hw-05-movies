@@ -1,11 +1,13 @@
 import css from './CatalogItem.module.css'
 import PropTypes from "prop-types";
+import { useLocation, Link } from 'react-router-dom';
 
 const CatalogItem=({title,id})=>{
+    const location = useLocation();
     return(
         <li className={css["CatalogItem"]}>
-        {title&&<a href="https://www.themoviedb.org/">{title} : {id}</a>}
-      </li>);
+            {title&&<Link to={`movies/${id}`} state={{ from: location }}>{title}</Link>}
+        </li>);
 
 }
 CatalogItem.propTypes ={

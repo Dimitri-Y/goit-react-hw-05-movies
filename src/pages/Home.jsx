@@ -1,8 +1,9 @@
 import {useState,useEffect} from "react";
 import fetchRequest from "httpRequest";
-import { CatalogBlock } from "components/CatalogBlock/CatalogBlock";
+import LoadingBlock from "components/LoadingBlock/LoadingBlock";
+import Catalog from "components/Catalog/Catalog";
 
-export const Home = () => {
+const Home = () => {
     const [catalog,setCatalog] =useState([]);  
     const [isLoading,setIsLoading]=useState(false);
     const [error,setError]=useState(null);
@@ -26,7 +27,10 @@ export const Home = () => {
     return (
       <main>
         <h2>Trending Today</h2>
-        <CatalogBlock catalog={catalog} error={error} isLoading={isLoading}></CatalogBlock>
+        <LoadingBlock error={error} isLoading={isLoading}>
+      {catalog.length > 0 && <Catalog catalog={catalog}></Catalog>}
+      </LoadingBlock>
       </main>
     );
   };
+export default Home;  

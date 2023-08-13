@@ -1,8 +1,7 @@
 import { ThreeDots} from 'react-loader-spinner'
-import Catalog from "components/Catalog/Catalog";
 import PropTypes from "prop-types";
 
-export const CatalogBlock = ({error,catalog,isLoading}) => {
+const LoadingBlock = ({error,children,isLoading}) => {
     return (
           <div>
             {error && <p>Whoops, something went wrong: {error.message}</p>}
@@ -18,16 +17,11 @@ export const CatalogBlock = ({error,catalog,isLoading}) => {
   visible={true}
    />
             </div>}
-          {catalog.length > 0 && <Catalog catalog={catalog}></Catalog>}
+          {children}
           </div>);
 }
-CatalogBlock.propTypes = {
-    error: PropTypes.string.isRequired,
-    catalog: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          title: PropTypes.string,
-        })
-      ).isRequired,
+LoadingBlock.propTypes = {
+    error: PropTypes.string,
     isLoading: PropTypes.bool.isRequired,
 }
+export default LoadingBlock;

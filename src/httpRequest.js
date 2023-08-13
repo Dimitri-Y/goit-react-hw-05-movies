@@ -3,11 +3,11 @@ const BaseURL = 'https://api.themoviedb.org/3';
 const APIKEY = '00cb515606c3767771985834ed87ee26';
 const TrendURL = `${BaseURL}/trending/all/day`;
 const SearchURL = `${BaseURL}/search/movie`;
-const DetailsURL = `${BaseURL}/movies/get-movie-details`;
-const CreditsURL = `${BaseURL}/movies/get-movie-credits`;
-const ReviewsURL = `${BaseURL}/movies/get-movie-reviews`;
+const DetailsURL = `${BaseURL}/movie`;
+const CreditsURL = `${BaseURL}/movie`;
+const ReviewsURL = `${BaseURL}/movie`;
 
-const fetchRequest = async (condition, { searchQuery, page }) => {
+const fetchRequest = async (condition, { searchQuery, page, movie_id }) => {
   let RequestURL = '';
   switch (condition) {
     case 'trend':
@@ -18,19 +18,18 @@ const fetchRequest = async (condition, { searchQuery, page }) => {
         SearchURL + `?api_key=${APIKEY}&page=${page}&query=${searchQuery}`;
       break;
     case 'details':
-      RequestURL = DetailsURL + `?api_key=${APIKEY}&${page}`;
+      RequestURL = DetailsURL + `/${movie_id}?api_key=${APIKEY}`;
       break;
     case 'credits':
-      RequestURL = CreditsURL + `?api-key=${APIKEY}&${page}`;
+      RequestURL = CreditsURL + `/${movie_id}/credits?&api_key=${APIKEY}`;
       break;
     case 'reviews':
-      RequestURL = ReviewsURL + `?api-key=${APIKEY}&${page}`;
+      RequestURL = ReviewsURL + `/${movie_id}/reviews?api_key=${APIKEY}`;
       break;
     default:
       break;
   }
   const response = axios.get(RequestURL);
-  console.log(RequestURL);
   return response;
 };
 export default fetchRequest;

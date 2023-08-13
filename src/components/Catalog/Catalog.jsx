@@ -10,7 +10,6 @@ const Catalog =({catalog})=>{
       )
       )
     }
-    {catalog.length}
   </ul>);
 }
 Catalog.propTypes={

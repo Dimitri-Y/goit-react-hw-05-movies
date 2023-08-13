@@ -1,0 +1,12 @@
+.movie {
+  display: flex;
+}
+.img {
+  margin-right: 16px;
+}
+.genre-span {
+  margin-right: 8px;
+}
+.add-info {
+  box-shadow: 1px 1px 14px 4px rgba(255, 255, 255, 0.42);
+}

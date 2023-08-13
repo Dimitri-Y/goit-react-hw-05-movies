@@ -2,7 +2,8 @@ import {useState,useEffect }from "react";
 import { useSearchParams} from "react-router-dom";
 import { SearchBox } from "../components/SearchBox/Searchbox";
 import fetchRequest from "httpRequest";
-import { CatalogBlock } from "components/CatalogBlock/CatalogBlock";
+import LoadingBlock from "components/LoadingBlock/LoadingBlock";
+import Catalog from "components/Catalog/Catalog";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,8 +41,9 @@ const Movies = () => {
   return (
     <main>
       <SearchBox value={searchName} updateQueryString={updateQueryString} onSubmit={onSubmit}/>
-      <p>{search}</p>
-      <CatalogBlock catalog={catalog} error={error} isLoading={isLoading}></CatalogBlock>
+      <LoadingBlock error={error} isLoading={isLoading}>
+      {catalog.length > 0 && <Catalog catalog={catalog}></Catalog>}
+      </LoadingBlock>
     </main>
   );
 };
