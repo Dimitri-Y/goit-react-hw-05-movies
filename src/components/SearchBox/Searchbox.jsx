@@ -1,11 +1,21 @@
+import {useState} from "react"
 import css from "./SearchBox.module.css";
 import PropTypes from "prop-types";
 
-export const SearchBox = ({ value,onSubmit,updateQueryString }) => {
-    const handleSubmit = evt => {
+export const SearchBox = ({onSubmit}) => {
+  const [query,setQuery]=useState("");  
+  const change=e=>{
+    setQuery(e.target.value.trim())
+  }
+  const handleSubmit = evt => {
         evt.preventDefault();
-        onSubmit(value);
+        if(query.trim()===""){
+          return window.alert("Uncorrect query");
         }
+        onSubmit(query);
+        setQuery('');
+        }
+
     return (
     <form className={css["SearchForm"]} onSubmit={handleSubmit}>
     <input
@@ -13,10 +23,10 @@ export const SearchBox = ({ value,onSubmit,updateQueryString }) => {
       type="text"
       autoComplete="off"
       name="searchName"
-      value={value}
+      value={query}
       autoFocus
       placeholder="Search images and photos"
-      onChange={(e)=>{updateQueryString(e.target.value);}}
+      onChange={change}
     />
         <button type="submit" className={css["SearchForm-button"]}>
       <span className={css["SearchForm-button-label"]}>Search</span>
@@ -27,7 +37,5 @@ export const SearchBox = ({ value,onSubmit,updateQueryString }) => {
 };
 
 SearchBox.propTypes={
-  value: PropTypes.string.isRequired,
-  onSubmit:PropTypes.func.isRequired, 
-  updateQueryString:PropTypes.func.isRequired, 
+   onSubmit:PropTypes.func.isRequired, 
 }
