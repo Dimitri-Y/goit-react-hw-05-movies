@@ -1,5 +1,6 @@
 import css from './MovieDetails.module.css';
 import { nanoid } from 'nanoid';
+import PropTypes from "prop-types";
 
 const MovieDetailsComponent=({details})=>{
     const urlImg=!details.poster_path?"https://ru.hostings.info/upload/images/2021/12/e11044b915dc39afc3004430606bd6d1.jpg":`https://image.tmdb.org/t/p/w500/${details.poster_path}`;
@@ -20,5 +21,8 @@ const MovieDetailsComponent=({details})=>{
         </div>  
         </div>);
 
+}
+MovieDetailsComponent.propTypes={
+  details:PropTypes.object.isRequired,
 }
 export default MovieDetailsComponent;

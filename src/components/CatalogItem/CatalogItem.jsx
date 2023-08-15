@@ -9,7 +9,6 @@ const CatalogItem=({title,id})=>{
         <li className={title?css["CatalogItem"]:css["CatalogItem-disabled"]}>
             {<Link to={to} state={{ from: location }}>{title}</Link>}
         </li>);
-
 }
 CatalogItem.propTypes ={
     title: PropTypes.string,

@@ -1,4 +1,5 @@
 import css from "./SearchBox.module.css";
+import PropTypes from "prop-types";
 
 export const SearchBox = ({ value,onSubmit,updateQueryString }) => {
     const handleSubmit = evt => {
@@ -24,3 +25,9 @@ export const SearchBox = ({ value,onSubmit,updateQueryString }) => {
   </form>
   );
 };
+
+SearchBox.propTypes={
+  value: PropTypes.string.isRequired,
+  onSubmit:PropTypes.func.isRequired, 
+  updateQueryString:PropTypes.func.isRequired, 
+}

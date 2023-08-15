@@ -4,7 +4,6 @@ import { BackLink } from "../BackLink/BackLink";
 const NotFound = () => {
     const location = useLocation();
     const backLinkHref = location.state?.from ?? "/";
-    console.log(location);
     return (
       <section>
         <p>This page Not Found</p>

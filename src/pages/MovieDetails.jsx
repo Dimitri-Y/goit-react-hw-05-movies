@@ -1,5 +1,5 @@
-import { useParams, useLocation, Link,Outlet } from "react-router-dom";
-import { useEffect ,useState,Suspense } from "react";
+import { useParams, useLocation, Link, Outlet } from "react-router-dom";
+import { useEffect , useState, Suspense, useRef } from "react";
 import { BackLink } from "../components/BackLink/BackLink";
 import fetchRequest from "httpRequest";
 import MovieDetailsComponent from "components/MovieDetailsComponent/MovieDetailsComponent";
@@ -9,7 +9,7 @@ import css from "../components/MovieDetailsComponent/MovieDetails.module.css"
 const MovieDetails = () => {
   const { movie_id } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+  const backLinkHref = useRef(location.state?.from ?? "/");  
   const [details,setDetails] =useState(null);  
     const [isLoading,setIsLoading]=useState(false);
     const [error,setError]=useState(null);
@@ -31,7 +31,7 @@ const MovieDetails = () => {
   },[movie_id]);  
   return (
     <main>
-      <BackLink to={backLinkHref}>Go Back</BackLink>
+      <BackLink  to={backLinkHref.current}>Go Back</BackLink>
       <LoadingBlock error={error} isLoading={isLoading}>
       {details&&<MovieDetailsComponent details={details}></MovieDetailsComponent>}
       </LoadingBlock>
