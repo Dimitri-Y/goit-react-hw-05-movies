@@ -7,7 +7,7 @@ import Catalog from "components/Catalog/Catalog";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchName = searchParams.get("query");
+  const searchName = searchParams.get("query")?? "";
   const [catalog,setCatalog] =useState([]);  
     const [isLoading,setIsLoading]=useState(false);
     const [error,setError]=useState(null);
@@ -16,6 +16,8 @@ const Movies = () => {
         setSearchParams({query:value});      
   } 
   useEffect(()=>{
+    if(searchName==="")
+      return;
     const addCatalog= async ()=>{  
         try {
           setIsLoading(true);
